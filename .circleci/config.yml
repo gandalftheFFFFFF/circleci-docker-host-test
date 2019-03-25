@@ -9,6 +9,6 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: docker build -t test .
-      - run: docker run --net=host -p 8080:8080 -d test:latest
-      - run: curl localhost:8080
+      - run: docker run --name app -p 8080:8080 -d test:latest
+      - run: docker run --network container:app appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
 
