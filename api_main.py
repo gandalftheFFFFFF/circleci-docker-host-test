@@ -2,6 +2,7 @@ import requests
 import os
 
 environment = os.getenv('CIRCLE_SHA1', 'offline')
+print(environment)
 
 if environment == 'offline':
     host = 'localhost'
