@@ -1,0 +1,13 @@
+
+version: 2
+
+jobs:
+  do-all-the-things:
+    docker:
+      - image: circleci/python:3
+    steps:
+      - checkout
+      - run: docker build -t test .
+      - run: docker run --net=host -p 8080:8080 -d test:latest
+      - run: curl localhost:8080
+
