@@ -8,7 +8,12 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: docker build -t test .
-      - run: docker run --name app -p 8080:8080 -d test:latest
-      - run: docker run --network container:app appropriate/curl --retry 10 --retry-connrefused http://localhost:8080
+      - run:
+        name: Install Docker Compose
+        command: |
+          curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+          chmod +x ~/docker-compose
+          sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run: docker-compose build
+      - run: docker-compose up api
 
