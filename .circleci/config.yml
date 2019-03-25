@@ -2,7 +2,7 @@
 version: 2
 
 jobs:
-  do-all-the-things:
+  build:
     docker:
       - image: circleci/python:3
     steps:
