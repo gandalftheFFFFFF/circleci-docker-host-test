@@ -3,8 +3,8 @@ version: 2
 
 jobs:
   build:
-    docker:
-      - image: circleci/python:3
+    machine:
+      image: circleci/python:3
     steps:
       - checkout
       - setup_remote_docker
