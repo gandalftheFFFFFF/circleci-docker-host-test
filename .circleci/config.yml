@@ -14,5 +14,6 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run: docker-compose build
       - run: docker-compose up -d
+      - run: sleep 5
       - run: curl http://0.0.0.0:8080/
 
