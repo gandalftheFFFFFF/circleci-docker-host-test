@@ -13,5 +13,6 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run: docker-compose build
-      - run: docker-compose up api
+      - run: docker-compose up -d
+      - run: curl http://localhost:8080/
 
